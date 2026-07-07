@@ -1,0 +1,34 @@
+## ===== .NET / Backend =====
+backend/HomeExpenses.Api/bin/
+backend/HomeExpenses.Api/obj/
+backend/**/bin/
+backend/**/obj/
+
+# Banco de dados SQLite (dados locais, não deve ir pro repositório)
+backend/**/*.db
+backend/**/*.db-shm
+backend/**/*.db-wal
+
+# Arquivos de usuário do Visual Studio
+*.user
+*.suo
+
+## ===== Node / Frontend (React + TypeScript) =====
+frontend/**/node_modules/
+frontend/**/dist/
+frontend/**/.vite/
+
+# Logs do npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## ===== Editor / SO =====
+.vscode/
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
+
+## ===== Variáveis de ambiente (não versionar segredos) =====
+*.env
