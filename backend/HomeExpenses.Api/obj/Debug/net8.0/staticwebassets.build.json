@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0BbOP4tYdGOwzi7v3LbWHReUvlcG5dBUwldTdXVHsgM=",
+  "Source": "HomeExpenses.Api",
+  "BasePath": "_content/HomeExpenses.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
