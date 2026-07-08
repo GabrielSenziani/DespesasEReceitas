@@ -65,8 +65,14 @@ public class PessoasController : ControllerBase
     
 
     [HttpPost]
-    public IActionResult Criar(Pessoa pessoa)
+    public IActionResult Criar(PessoaCreateDto dto)
     {
+    var pessoa = new Pessoa 
+    {
+        Nome = dto.Nome,
+        Idade = dto.Idade
+    };
+
     _context.TabelaPessoa.Add(pessoa); // Add() vai adicionar uma pessoa ao banco de dados, para isso é necessario inserir o body de acordo com o que foi escrito no models Pessoa.cs
     _context.SaveChanges();
     return Ok(pessoa);

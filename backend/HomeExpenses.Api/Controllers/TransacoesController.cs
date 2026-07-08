@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using HomeExpenses.Api.Data;
 using HomeExpenses.Api.Models;
+using HomeExpenses.Api.DTOs;
 
 namespace HomeExpenses.Api.Controllers;
 
@@ -22,14 +23,22 @@ public class TransacoesController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Criar(Transacao transacao)
+    public IActionResult Criar(TransacaoCreateDto dto)
     {
-    var pessoa = _context.TabelaPessoa.Find(transacao.PessoaId); //busca a pessoa pelo id da transacao recebida
+    var pessoa = _context.TabelaPessoa.Find(dto.PessoaId); //busca a pessoa pelo id da transacao recebida
 
     if (pessoa == null)
 {
     return BadRequest("Pessoa não encontrada.");
 }
+    // Cria a entidade Transacao a partir do DTO
+    var transacao = new Transacao
+    {
+        Descricao = dto.Descricao,
+        Valor = dto.Valor,
+        Tipo = dto.Tipo,
+        PessoaId = dto.PessoaId
+    };
 
     if (pessoa.IsMinor && transacao.Tipo != TipoTransacao.Despesa)
 {
