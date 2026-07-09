@@ -18,7 +18,9 @@ function App() {
 
             <ListaPessoas onAtualizar={atualizarDados} />
 
-            <Transacoes onAtualizar={atualizarDados} />
+            <Transacoes onAtualizar={atualizarDados} 
+                        atualizacao={atualizacao}
+            />
 
             <Totais atualizacao={atualizacao} />
         </>

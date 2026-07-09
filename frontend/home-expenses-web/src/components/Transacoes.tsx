@@ -5,9 +5,10 @@ import type { Transacao } from "../types/Transacao";
 
 interface TransacoesProps {
     onAtualizar: () => void;
+    atualizacao: number;
 }
 
-function Transacoes({ onAtualizar }: TransacoesProps) {
+function Transacoes({ onAtualizar, atualizacao }: TransacoesProps) {
     const [transacoes, setTransacoes] = useState<Transacao[]>([]);
     const [pessoas, setPessoas] = useState<Pessoa[]>([]);
     const [descricao, setDescricao] = useState("");
@@ -31,7 +32,7 @@ function Transacoes({ onAtualizar }: TransacoesProps) {
          carregarPessoas();
        }
        carregarDados();
-    }, []);
+    }, [atualizacao]);
 
     async function handleCriar() {
         await api.post("/Transacoes", {
