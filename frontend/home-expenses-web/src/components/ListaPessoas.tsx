@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import api from "../services/api";
 import type { Pessoa } from "../types/Pessoa";
 
-function ListaPessoas () {
+interface ListaPessoasProps {
+    onAtualizar: () => void;
+}
+
+function ListaPessoas({ onAtualizar }: ListaPessoasProps) {
     const [pessoas, setPessoas] = useState<Pessoa[]>([]); // aqui foi tipado pois pessoas é uma lista de objetos do tipo Pessoa
     const [nome, setNome] = useState(""); // o useState() vai guardar os dados que mudam, mesma coisa para pessoas e idade
     const [idade, setIdade] = useState(0);
@@ -23,6 +27,8 @@ function ListaPessoas () {
 
     const resposta = await api.get<Pessoa[]>("/Pessoas");
     setPessoas(resposta.data);
+
+     onAtualizar();
 }
 
    async function handleDeletar(id: number) {
@@ -30,6 +36,8 @@ function ListaPessoas () {
 
     const resposta = await api.get<Pessoa[]>("/Pessoas");
      setPessoas(resposta.data);
+
+     onAtualizar();
    }
 
     return (
